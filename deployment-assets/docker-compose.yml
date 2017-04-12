@@ -14,7 +14,7 @@ services:
       - "./nginx-conf:/etc/nginx/conf.d/"
     restart: always
   letsencrypt:
-    image: certbot:latest
+    image: quay.io/letsencrypt/letsencrypt:latest
     ports:
       - 3001:80
     networks:
