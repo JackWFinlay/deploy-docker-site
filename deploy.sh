@@ -13,7 +13,7 @@ git clone https://github.com/JackWFinlay/Blog-Engine.git
 docker-compose run proxy -d
 
 docker-compose run --rm letsencrypt \
-  letsencrypt certonly --webroot \
+  certbot certonly --webroot \
   --email jack@jackfinlay.com --agree-tos \
   -w /var/www/letsencrypt -d depthcharge.co
 
