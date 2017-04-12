@@ -1,0 +1,34 @@
+version: "3"
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - web-server
+    volumes:
+      - certs:/etc/letsencrypt
+      - "./JackWFinlay.github.io:/usr/share/nginx/html"
+      - "./nginx-conf:/etc/nginx"
+  letsencrypt:
+    image: letsencrypt:latest
+    ports:
+      - 3001:80
+    networks:
+      - web-server
+    volumes:
+      - certs:/etc/letsencrypt
+    depends_on:
+      - nginx
+  node:
+    image: nodejs
+    ports:
+      - 3000:3000
+    depends_on:
+      - nginx
+    volumes:
+      - "Blog-Engine:/usr/local/blog-engine"
+volumes:
+  - certs
+
