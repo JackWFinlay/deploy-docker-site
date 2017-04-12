@@ -8,10 +8,10 @@ services:
     networks:
       - web-server
     volumes:
-      - certs:/etc/letsencrypt
-      - letsencrypt_www:/var/www/letsencrypt
+      - certs:/etc/letsencrypt/
+      - letsencrypt_www:/var/www/letsencrypt/
       - "./JackWFinlay.github.io:/usr/share/nginx/html"
-      - "./nginx-conf:/etc/nginx/conf.d/"
+      - "./nginx-conf/:/etc/nginx/conf.d/"
     restart: always
   letsencrypt:
     image: quay.io/letsencrypt/letsencrypt:latest
@@ -30,7 +30,7 @@ services:
     depends_on:
       - proxy
     volumes:
-      - "./Blog-Engine:/usr/local/blog-engine"
+      - "./Blog-Engine/:/usr/local/blog-engine/"
 volumes:
   certs: ~
   letsencrypt_www: ~
