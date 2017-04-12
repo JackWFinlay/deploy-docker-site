@@ -9,7 +9,7 @@ git clone https://github.com/JackWFinlay/Blog-Engine.git
 
 # rm nginx-conf/default.conf
 echo $PWD
-cp deployment-assets/letsencryptchallenge/app.conf nginx-conf
+cp letsencryptchallenge/app.conf nginx-conf
 
 docker-compose run --rm letsencrypt \
   letsencrypt certonly --webroot \
@@ -17,7 +17,7 @@ docker-compose run --rm letsencrypt \
   -w /var/www/letsencrypt -d depthcharge.co
 
 docker-compose up -d
-cp deployment-assets/app.conf nginx-conf
+cp app.conf nginx-conf
 docker-compose restart proxy
 
 # docker build -t nginxserverimage .
