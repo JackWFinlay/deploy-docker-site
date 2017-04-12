@@ -1,7 +1,7 @@
 version: "2"
 services:
-  nginx:
-    image: nginx
+  proxy:
+    image: nginx:stable
     ports:
       - 80:80
       - 443:443
@@ -9,8 +9,10 @@ services:
       - web-server
     volumes:
       - certs:/etc/letsencrypt
+      - letsencrypt_www:/var/www/letsencrypt
       - "./JackWFinlay.github.io:/usr/share/nginx/html"
-      - "./nginx-conf:/etc/nginx"
+      - "./nginx-conf:/etc/nginx/conf.d/"
+    restart: always
   letsencrypt:
     image: certbot:latest
     ports:
@@ -20,17 +22,18 @@ services:
     volumes:
       - certs:/etc/letsencrypt
     depends_on:
-      - nginx
+      - proxy
   node:
     image: node
     ports:
       - 3000:3000
     depends_on:
-      - nginx
+      - proxy
     volumes:
       - "./Blog-Engine:/usr/local/blog-engine"
 volumes:
-  certs:
+  certs: ~
+  letsencrypt_www: ~
 networks:
   web-server:
 

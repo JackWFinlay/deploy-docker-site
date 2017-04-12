@@ -10,8 +10,14 @@ git clone https://github.com/JackWFinlay/Blog-Engine.git
 docker-compose up
 
 # rm nginx-conf/default.conf
-# cp nginx.conf nginx-conf
-# cp default nginx-conf/sites-available
+cp challenge.conf nginx-conf
+
+docker-compose run --rm letsencrypt \
+  letsencrypt certonly --webroot \
+  --email jack@jackfinlay.com --agree-tos \
+  -w /var/www/letsencrypt -d depthcharge.co
+
+docker-compose kill -s SIGHUP nginx
 
 # docker build -t nginxserverimage .
 # docker run --name nginxserver -P -d nginxserverimage
