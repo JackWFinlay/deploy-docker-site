@@ -28,7 +28,7 @@ services:
     depends_on:
       - nginx
     volumes:
-      - "Blog-Engine:/usr/local/blog-engine"
+      - "./Blog-Engine:/usr/local/blog-engine"
 volumes:
   certs:
 
