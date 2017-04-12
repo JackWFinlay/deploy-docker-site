@@ -30,5 +30,5 @@ services:
     volumes:
       - "Blog-Engine:/usr/local/blog-engine"
 volumes:
-  - certs
+  certs:
 
