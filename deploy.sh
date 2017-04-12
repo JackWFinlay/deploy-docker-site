@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 mkdir ~/deploy
-cp - r deployment-assets/* ~/deploy
+cp -r deployment-assets/* ~/deploy
 cd ~/deploy
 
 git clone https://github.com/JackWFinlay/JackWFinlay.github.io.git
