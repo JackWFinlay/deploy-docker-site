@@ -31,4 +31,6 @@ services:
       - "./Blog-Engine:/usr/local/blog-engine"
 volumes:
   certs:
+networks:
+  - web-server
 
