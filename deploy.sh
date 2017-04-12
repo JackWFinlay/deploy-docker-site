@@ -17,7 +17,7 @@ docker-compose run --rm letsencrypt \
   --email jack@jackfinlay.com --agree-tos \
   -w /var/www/letsencrypt -d depthcharge.co
 
-docker-compose kill -s SIGHUP nginx
+docker-compose kill -s SIGHUP proxy
 
 # docker build -t nginxserverimage .
 # docker run --name nginxserver -P -d nginxserverimage
