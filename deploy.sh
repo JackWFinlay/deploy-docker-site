@@ -8,9 +8,7 @@ git clone https://github.com/JackWFinlay/JackWFinlay.github.io.git
 git clone https://github.com/JackWFinlay/Blog-Engine.git
 
 # rm nginx-conf/default.conf
-echo $PWD
-ls
-cp ./letsencryptchallenge/default.conf nginx-conf
+#cp ./letsencryptchallenge/default.conf nginx-conf
 
 docker-compose run proxy -d
 
