@@ -32,5 +32,5 @@ services:
 volumes:
   certs:
 networks:
-  - web-server
+  web-server:
 
