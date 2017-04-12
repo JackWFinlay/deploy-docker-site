@@ -11,7 +11,7 @@ services:
       - certs:/etc/letsencrypt/
       - letsencrypt_www:/var/www/letsencrypt/
       - "./JackWFinlay.github.io:/usr/share/nginx/html"
-      - "./nginx-conf/:/etc/nginx/conf.d/"
+      - "./nginx-conf/:/etc/nginx/"
     restart: always
   letsencrypt:
     image: quay.io/letsencrypt/letsencrypt:latest
