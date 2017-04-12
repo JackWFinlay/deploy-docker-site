@@ -8,6 +8,7 @@ git clone https://github.com/JackWFinlay/JackWFinlay.github.io.git
 git clone https://github.com/JackWFinlay/Blog-Engine.git
 
 # rm nginx-conf/default.conf
+echo $PWD
 cp deployment-assets/letsencryptchallenge/app.conf nginx-conf
 
 docker-compose run --rm letsencrypt \
