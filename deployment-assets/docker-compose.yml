@@ -12,7 +12,7 @@ services:
       - "./JackWFinlay.github.io:/usr/share/nginx/html"
       - "./nginx-conf:/etc/nginx"
   letsencrypt:
-    image: letsencrypt:latest
+    image: certbot:latest
     ports:
       - 3001:80
     networks:
