@@ -19,5 +19,7 @@ docker-compose run --rm letsencrypt \
 
 docker-compose kill -s SIGHUP proxy
 
+cp app.conf nginx-conf
+
 # docker build -t nginxserverimage .
 # docker run --name nginxserver -P -d nginxserverimage
