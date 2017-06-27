@@ -37,6 +37,7 @@ services:
     networks:
       - web-server
   dotnet-site:
+    dockerfile: Dockerfile
     image: microsoft/dotnet:latest
     build: Jsonize-Web/src/Jsonize-Web
     command: dotnet run

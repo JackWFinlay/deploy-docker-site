@@ -12,10 +12,10 @@ docker-compose run dotnet-site dotnet restore
 
 docker-compose run proxy -d
 
-docker-compose run --rm letsencrypt \
-  certonly --webroot \
-  --email jack@jackfinlay.com --agree-tos \
-  -w /var/www/letsencrypt -d depthcharge.co
+#docker-compose run --rm letsencrypt \
+#  certonly --webroot \
+#  --email jack@jackfinlay.com --agree-tos \
+#  -w /var/www/letsencrypt -d depthcharge.co
 
 docker-compose up -d
 cp ./default.conf nginx-conf
