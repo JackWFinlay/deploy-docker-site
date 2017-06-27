@@ -38,7 +38,7 @@ services:
       - web-server
   dotnet-site:
     image: microsoft/dotnet:latest
-    build: src/Jsonize-Web
+    build: Jsonize-Web/src/Jsonize-Web
     command: dotnet run
     environment:
       - DepthchargeRenderUrl="http://localhost:3000/api/render"
