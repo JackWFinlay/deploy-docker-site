@@ -1,3 +1,7 @@
-FROM nginx
+FROM microsoft/dotnet
 
-VOLUME JackWFinlay.github.io /usr/share/nginx/html
+RUN mkdir /Jsonize-Web
+WORKDIR /Jsonize-Web
+
+ADD . /Jsonize-Web
+RUN dotnet restore
