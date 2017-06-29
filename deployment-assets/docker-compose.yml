@@ -47,7 +47,6 @@ services:
       context: .
       dockerfile: Jsonize-Web/Dockerfile
     # image: microsoft/dotnet:latest
-    build: Jsonize-Web/src/Jsonize-Web
     command: dotnet run
     environment:
       - DepthchargeRenderUrl="http://localhost:3000/api/render"
