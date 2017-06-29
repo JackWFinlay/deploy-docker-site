@@ -16,4 +16,4 @@ git clone https://github.com/JackWFinlay/Jsonize-Web.git
 docker-compose stop
 docker-compose rm -f
 docker-compose pull
-docker-compose up --build -d
+docker-compose up --build -d -t
