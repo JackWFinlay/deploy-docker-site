@@ -13,6 +13,8 @@ services:
       # - "./Jsonize-Web:/usr/share/nginx/html"
       - "./nginx-conf/:/etc/nginx/"
     restart: always
+    depends_on:
+      - dotnet-site
   # letsencrypt:
   #   image: quay.io/letsencrypt/letsencrypt:latest
   #   ports:
@@ -33,8 +35,6 @@ services:
       - PORT=3000
     ports:
       - 3000:3000
-    depends_on:
-      - proxy
     volumes:
       - "./Depthcarge.Render/:/usr/local/Depthcharge.Render/"
     networks:
@@ -49,8 +49,6 @@ services:
     command: dotnet run
     environment:
       - DepthchargeRenderUrl="http://localhost:3000/api/render"
-    depends_on:
-      - proxy
     volumes:
       - "./Jsonize-Web/:/usr/local/Jsonize-Web"
     networks:
