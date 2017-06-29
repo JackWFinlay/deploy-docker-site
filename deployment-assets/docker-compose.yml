@@ -11,7 +11,7 @@ services:
       - certs:/etc/letsencrypt/
       # - letsencrypt_www:/var/www/letsencrypt/
       # - "./Jsonize-Web:/usr/share/nginx/html"
-      - "./nginx-conf/:/etc/nginx/nginx.conf"
+      - "./nginx-conf/:/etc/nginx/"
     restart: always
   # letsencrypt:
   #   image: quay.io/letsencrypt/letsencrypt:latest
