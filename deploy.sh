@@ -13,8 +13,10 @@ git clone https://github.com/JackWFinlay/Jsonize-Web.git
 #  certonly --webroot \
 #  --email jack@jackfinlay.com --agree-tos \
 #  -w /var/www/letsencrypt -d depthcharge.co
-
-docker-compose up -d
+docker-compose stop
+docker-compose rm -f
+docker-compose pull
+docker-compose up --build -d
 
 cp ./default.conf nginx-conf
 docker-compose restart proxy
