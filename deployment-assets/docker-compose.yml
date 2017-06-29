@@ -10,22 +10,23 @@ services:
     volumes:
       - certs:/etc/letsencrypt/
       - letsencrypt_www:/var/www/letsencrypt/
-      - "./JackWFinlay.github.io:/usr/share/nginx/html"
+      - "./Jsonize-Web:/usr/share/nginx/html"
       - "./nginx-conf/:/etc/nginx/conf.d/"
     restart: always
-  letsencrypt:
-    image: quay.io/letsencrypt/letsencrypt:latest
-    ports:
-      - 3001:80
-    networks:
-      - web-server
-    volumes:
-      - letsencrypt_www:/var/www/letsencrypt/
-      - certs:/etc/letsencrypt
-    depends_on:
-      - proxy
+  # letsencrypt:
+  #   image: quay.io/letsencrypt/letsencrypt:latest
+  #   ports:
+  #     - 3001:80
+  #   networks:
+  #     - web-server
+  #   volumes:
+  #     - letsencrypt_www:/var/www/letsencrypt/
+  #     - certs:/etc/letsencrypt
+  #   depends_on:
+  #     - proxy
   node:
     image: node:stable
+    dockerfile: Depthcharge.Render/Dockerfile
     environment:
       - PORT=3000
     ports:
@@ -37,7 +38,10 @@ services:
     networks:
       - web-server
   dotnet-site:
-    dockerfile: Dockerfile
+    ports:
+      - 80:80
+      - 443:443
+    dockerfile: Jsonize-Web/Dockerfile
     image: microsoft/dotnet:latest
     build: Jsonize-Web/src/Jsonize-Web
     command: dotnet run
