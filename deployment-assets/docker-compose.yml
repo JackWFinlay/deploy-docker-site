@@ -26,7 +26,9 @@ services:
   #     - proxy
   node:
     image: node:stable
-    dockerfile: Depthcharge.Render/Dockerfile
+    build:
+      context: .
+      dockerfile: Depthcharge.Render/Dockerfile
     environment:
       - PORT=3000
     ports:
@@ -41,7 +43,9 @@ services:
     ports:
       - 80:80
       - 443:443
-    dockerfile: Jsonize-Web/Dockerfile
+    build:
+      context: .
+      dockerfile: Jsonize-Web/Dockerfile
     image: microsoft/dotnet:latest
     build: Jsonize-Web/src/Jsonize-Web
     command: dotnet run
