@@ -25,7 +25,7 @@ services:
   #   depends_on:
   #     - proxy
   node:
-    image: node:stable
+    # image: node:stable
     build:
       context: .
       dockerfile: Depthcharge.Render/Dockerfile
@@ -46,7 +46,7 @@ services:
     build:
       context: .
       dockerfile: Jsonize-Web/Dockerfile
-    image: microsoft/dotnet:latest
+    # image: microsoft/dotnet:latest
     build: Jsonize-Web/src/Jsonize-Web
     command: dotnet run
     environment:
