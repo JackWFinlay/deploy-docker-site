@@ -7,6 +7,8 @@ services:
       - 443:443
     networks:
       - web-server
+    links:
+      - dotnet-site
     volumes:
       - certs:/etc/letsencrypt/
       # - letsencrypt_www:/var/www/letsencrypt/
