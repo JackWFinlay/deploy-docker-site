@@ -42,6 +42,7 @@ services:
     networks:
       - web-server
   dotnet-site:
+    container_name: dotnet-site
     ports:
       - "5000:5000"
     expose:
