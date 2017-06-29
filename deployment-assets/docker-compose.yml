@@ -44,6 +44,8 @@ services:
   dotnet-site:
     ports:
       - "5000:5000"
+    expose:
+      - "5000"
     build:
       context: .
       dockerfile: Jsonize-Web/Dockerfile
