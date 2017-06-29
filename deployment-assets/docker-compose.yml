@@ -3,8 +3,8 @@ services:
   proxy:
     image: nginx:stable
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     networks:
       - web-server
     links:
@@ -36,14 +36,14 @@ services:
     environment:
       - PORT=3000
     ports:
-      - 3000:3000
+      - "3000:3000"
     volumes:
       - "./Depthcarge.Render/:/usr/local/Depthcharge.Render/"
     networks:
       - web-server
   dotnet-site:
     ports:
-      - 5000:5000
+      - "5000:5000"
     build:
       context: .
       dockerfile: Jsonize-Web/Dockerfile
