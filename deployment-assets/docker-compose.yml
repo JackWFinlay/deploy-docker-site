@@ -1,22 +1,22 @@
 version: "2"
 services:
-  # proxy:
-  #   image: nginx:stable
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   networks:
-  #     - web-server
-  #   links:
-  #     - dotnet-site
-  #   volumes:
-  #     - certs:/etc/letsencrypt/
-  #     # - letsencrypt_www:/var/www/letsencrypt/
-  #     # - "./Jsonize-Web:/usr/share/nginx/html"
-  #     - "./nginx-conf/:/etc/nginx/"
-  #   restart: always
-  #   depends_on:
-  #     - dotnet-site
+  proxy:
+    image: nginx:stable
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - web-server
+    links:
+      - dotnet-site
+    volumes:
+      - certs:/etc/letsencrypt/
+      # - letsencrypt_www:/var/www/letsencrypt/
+      # - "./Jsonize-Web:/usr/share/nginx/html"
+      - "./nginx-conf/:/etc/nginx/"
+    restart: always
+    depends_on:
+      - dotnet-site
   # letsencrypt:
   #   image: quay.io/letsencrypt/letsencrypt:latest
   #   ports:
@@ -29,7 +29,7 @@ services:
   #   depends_on:
   #     - proxy
   node:
-    # image: node:stable
+    image: node:stable
     build:
       context: .
       dockerfile: Depthcharge.Render/Dockerfile
@@ -41,10 +41,12 @@ services:
       - "./Depthcarge.Render/:/usr/local/Depthcharge.Render/"
     networks:
       - web-server
+    links:
+      - dotnet-site
   dotnet-site:
     container_name: dotnet-site
     ports:
-      - "80:5000"
+      - "5000:5000"
     build:
       context: .
       dockerfile: Jsonize-Web/Dockerfile
